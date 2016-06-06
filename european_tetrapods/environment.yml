@@ -1,0 +1,13 @@
+name: udr_europead_tetrapods
+channels:
+  - defaults
+  - bioconda
+dependencies:
+  - python=3.5
+  - click
+  - flask
+  - GDAL>=2.0.0
+  - snakemake
+  - yaml
+  - pip:
+      - python-dotenv
