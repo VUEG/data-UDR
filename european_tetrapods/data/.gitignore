@@ -3,3 +3,4 @@
 
 # But not this file...
 !.gitignore
+!README.md
