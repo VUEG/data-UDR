@@ -1,4 +1,4 @@
-## Distributions of European tetratpods
+## Distributions of European tetrapods
 
 This dataset include the distributions of 819 species of European tetrapods (amphibians, birds, mammals, and reptiles). Data is binary (`0 = unsuitable habitat`, `1 = suitable habitat`) indicating the suitability of the habitat. For the four groups, the EOOs (extent of occurrence) were then refined using habitat preferences for all species, obtained from expert opinion and published literature.
 
