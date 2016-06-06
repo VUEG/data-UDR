@@ -11,5 +11,6 @@ dependencies:
   - rasterio
   - snakemake
   - yaml
+  - xlrd
   - pip:
       - python-dotenv
