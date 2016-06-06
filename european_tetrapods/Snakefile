@@ -1,52 +1,62 @@
+import glob
+import sys
+
+from pandas import concat, read_excel
+
+
+## GLOBALS ---------------------------------------------------------------------
+
+# List the datasets to be processed
+DATASETS = glob.glob("data/org/amph/*/hdr.adf") + \
+           glob.glob("data/org/bird/*/hdr.adf") + \
+           glob.glob("data/org/mam/*/hdr.adf") + \
+           glob.glob("data/org/rept/*/hdr.adf")
+
+## RULES -----------------------------------------------------------------------
+
+rule all:
+	input: expand("data/european_tetrapods/{taxon}", taxon=["amphibians", "birds", "mammals", "reptiles"])
+
 # Rule to checkt the extents of tranlsated bird files.
 rule check_extents:
     input:
-        "data/birds"
+        DATASETS
     output:
-        "data/birds"
+        temp(touch("data/org/extent.ok"))
     log:
         "log/extents.log"
-    message: "Checking bird raster extents..."
+    message: "Checking raster extents..."
     script:
         "scripts/check_extents.py"
 
-# Rule to extract the data from from the 7z archive
-rule extract:
-    input:
-        "data/originals/birds.7z"
-    output:
-        "data"
-    log:
-        "log/extract.log"
-    message: "Extracting AIGs from {input}."
-    shell:
-        # Extra quotes needed because of the whitespace in the name.
-        # NOTE: This assumes that 7zip is around.
-        # NOTE: Only subfolder birds/output and ReadMe.xlsx are actually extracted.
-        "7za x '{input}' birds/output birds/ReadMe.xlsx -o{output} -r -aoa -mmt{threads} >& {log}"
-
 # Rule to convert the Excel file containing the species names into CSV.
-rule spconvert:
+rule convert_spp_names:
     input:
-        "data/birds/ReadMe.xlsx"
+        excel_file="data/org/Codes.xlsx"
     output:
-        "data/birds/farmland_birds_sp.csv"
+        csv_file="data/european_tetrapods/spp_codes.csv"
     log:
-        "log/spconvert.log"
+        "log/spp_convert.log"
     message: "converting {input} to CSV."
-    script:
-        "scripts/spconvert.py"
+    run:
+        # Load data
+        spp_names = read_excel(input.excel_file, sheetname="Foglio1")
+        # Fix column headers
+        spp_names.columns = ["code", "class", "species"]
+        # Write output
+        spp_names.to_csv(output.csv_file, index=False)
 
 # Rule to translate a filtered set of bird species distributions from AIG to
 # GeoTIFFs. File names will be replaced with the species name.
-rule sptranslate:
+rule translate_spp_rasters:
     input:
-        input_dir='data/birds/output',
-        sp_data='data/birds/farmland_birds_sp.csv'
+        datasets=DATASETS,
+        extents_ok=rules.check_extents.output[0],
+        spp_names_file=rules.convert_spp_names.output.csv_file
     output:
-        "data/birds"
+        output_dirs=rules.all.input
     log:
-        "log/sptranslate.log"
+        "log/translate_rasters.log"
     message: "Translating files to GeoTIFF"
     script:
-        "scripts/sptranslate.py"
+        "scripts/translate_rasters.py"
