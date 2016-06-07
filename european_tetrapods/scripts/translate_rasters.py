@@ -4,7 +4,9 @@ import os
 import subprocess
 import sys
 import re
+import yaml
 from pandas import read_csv
+
 
 def mkdir_p(path):
     try:
@@ -24,7 +26,7 @@ log_file = snakemake.log[0]
 
 logger = logging.getLogger("translate_rasters")
 logger.setLevel(logging.DEBUG)
-logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s]  %(message)s")
+logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
 
 fileHandler = logging.FileHandler(log_file)
 fileHandler.setFormatter(logFormatter)
@@ -35,10 +37,16 @@ consoleHandler.setFormatter(logFormatter)
 logger.addHandler(consoleHandler)
 
 # Load the additional CSV data
-spp_data =  read_csv(spp_names_file)
+spp_data = read_csv(spp_names_file)
 
 n_files = len(input_rasters)
 counter = 1
+# Create a data manifest dictionary
+data_manifest = {'provider': 'udr',
+                 'collections': {'amphibians': [],
+                                 'birds': [],
+                                 'mammals': [],
+                                 'reptiles': []}}
 
 for aig in input_rasters:
     # Figure out the species. First, get rid of 'hdr.adf' in the AIG name
@@ -54,12 +62,12 @@ for aig in input_rasters:
     # Get the auxiliary data
     sci_name = spp_data.loc[spp_data.code == spp_code, 'species']
     taxon = spp_data.loc[spp_data.code == spp_code, 'class'].values[0].lower()
-
     # Finally, fix the output path
     output_path = [path for path in output_dirs if taxon in path][0]
 
     if len(sci_name) == 0:
-        logger.warning('No entry found for AIG {0} (spp_code: {1})'.format(aig, spp_code))
+        logger.warning('No entry found for AIG {0} (spp_code: {1})'.format(aig,
+                       spp_code))
     else:
         sci_name = sci_name.values[0]
         output_file = sci_name.lower().replace(' ', '_') + '.tif'
@@ -73,8 +81,19 @@ for aig in input_rasters:
         cmd.append(aig)
         cmd.append(output_file)
         logger.info('[{0}/{1}] Translating {2} to {3}...'.format(counter,
-                                                          n_files,
-                                                          aig,
-                                                          output_file))
+                                                                 n_files,
+                                                                 aig,
+                                                                 output_file))
         subprocess.run(cmd)
+        file_base = os.path.basename(output_file)
+        data_manifest['collections'][taxon].append(file_base)
         counter += 1
+
+data_manifest['collections']['amphibians'].sort()
+data_manifest['collections']['birds'].sort()
+data_manifest['collections']['mammals'].sort()
+data_manifest['collections']['reptiles'].sort()
+
+# Write the data manifest file
+with open(snakemake.output['data_manifest'], 'w') as outfile:
+    outfile.write(yaml.dump(data_manifest, default_flow_style=False))

@@ -54,7 +54,8 @@ rule translate_spp_rasters:
         extents_ok=rules.check_extents.output[0],
         spp_names_file=rules.convert_spp_names.output.csv_file
     output:
-        output_dirs=rules.all.input
+        output_dirs=rules.all.input,
+        data_manifest="data/european_tetrapods/data_manifest.yml"
     log:
         "log/translate_rasters.log"
     message: "Translating files to GeoTIFF"
