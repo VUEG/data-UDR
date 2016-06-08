@@ -18,16 +18,16 @@ rule all:
 	input: expand("data/european_tetrapods/{taxon}", taxon=["amphibians", "birds", "mammals", "reptiles"])
 
 # Rule to checkt the extents of tranlsated bird files.
-rule check_extents:
+rule check_data:
     input:
         DATASETS
     output:
-        temp(touch("data/org/extent.ok"))
+        "data/org/skipped_rasters.yml"
     log:
-        "log/extents.log"
-    message: "Checking raster extents..."
+        "log/checks.log"
+    message: "Checking raster extents and values..."
     script:
-        "scripts/check_extents.py"
+        "scripts/checks.py"
 
 # Rule to convert the Excel file containing the species names into CSV.
 rule convert_spp_names:
@@ -51,7 +51,7 @@ rule convert_spp_names:
 rule translate_spp_rasters:
     input:
         datasets=DATASETS,
-        extents_ok=rules.check_extents.output[0],
+        skip_rasters=rules.check_data.output[0],
         spp_names_file=rules.convert_spp_names.output.csv_file
     output:
         output_dirs=rules.all.input,

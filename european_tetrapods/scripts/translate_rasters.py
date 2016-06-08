@@ -21,20 +21,24 @@ def mkdir_p(path):
 # Get the inputs and outputs
 input_rasters = snakemake.input['datasets']
 spp_names_file = snakemake.input['spp_names_file']
+skip_rasters = snakemake.input.skip_rasters
 output_dirs = snakemake.output
 log_file = snakemake.log[0]
 
 logger = logging.getLogger("translate_rasters")
 logger.setLevel(logging.DEBUG)
-logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s] %(message)s")
+logFormatter = logging.Formatter("%(asctime)s [%(name)-12s] " +
+                                 "[%(levelname)-5.5s] %(message)s",
+                                 datefmt='%a, %d %b %Y %H:%M:%S')
 
-fileHandler = logging.FileHandler(log_file)
+fileHandler = logging.FileHandler(log_file, mode='w')
+consoleHandler = logging.StreamHandler()
 fileHandler.setFormatter(logFormatter)
 logger.addHandler(fileHandler)
-
-consoleHandler = logging.StreamHandler()
-consoleHandler.setFormatter(logFormatter)
 logger.addHandler(consoleHandler)
+
+SKIP_RASTERS = yaml.safe_load(open(skip_rasters, 'r'))
+
 
 # Load the additional CSV data
 spp_data = read_csv(spp_names_file)
@@ -49,6 +53,11 @@ data_manifest = {'provider': 'udr',
                                  'reptiles': []}}
 
 for aig in input_rasters:
+    # Skip raster if it's in skip_rasters list
+    if aig in SKIP_RASTERS:
+        logger.warning('[{0}/{1}] Skipping an empty'.format(counter, n_files) +
+                       ' or zero raster')
+        next
     # Figure out the species. First, get rid of 'hdr.adf' in the AIG name
     spp_path = aig.replace('/hdr.adf', '')
     # Split the path
@@ -66,8 +75,8 @@ for aig in input_rasters:
     output_path = [path for path in output_dirs if taxon in path][0]
 
     if len(sci_name) == 0:
-        logger.warning('No entry found for AIG {0} (spp_code: {1})'.format(aig,
-                       spp_code))
+        logger.warning('[{0}/{1}] No entry found'.format(counter, n_files) +
+                       ' for AIG {0} (spp_code: {1})'.format(aig, spp_code))
     else:
         sci_name = sci_name.values[0]
         output_file = sci_name.lower().replace(' ', '_') + '.tif'
