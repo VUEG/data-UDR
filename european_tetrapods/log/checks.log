@@ -1,0 +1,64 @@
+2016-06-08 19:23:23 [check_data  ] [INFO ] Only one minx found: 1999999.999999999
+2016-06-08 19:23:23 [check_data  ] [INFO ] Only one miny found: 1000000.0000000009
+2016-06-08 19:23:23 [check_data  ] [INFO ] Only one maxx found: 6525999.999999999
+2016-06-08 19:23:23 [check_data  ] [INFO ] Only one maxy found: 5410000.000000001
+2016-06-08 19:23:23 [check_data  ] [WARNI] Zero rasters found:
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/amph/ma25/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/amph/ma32/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/amph/ma99/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/amph/ma101/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb11/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb12/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb13/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb18/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb19/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb23/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb137/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb232/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb247/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb272/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb277/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb315/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb381/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb397/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb410/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb489/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb492/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb501/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb508/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb509/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb510/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/bird/mb513/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm157/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm3/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm195/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm207/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm216/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm230/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/mam/mm49/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr104/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr2/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr20/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr121/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr130/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr135/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr142/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr145/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr189/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr190/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr191/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr192/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr193/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr223/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr7/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr23/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr26/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr74/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr92/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr93/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr94/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr95/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr96/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr97/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr98/hdr.adf
+2016-06-08 19:23:23 [check_data  ] [WARNI]  data/org/rept/mr99/hdr.adf
