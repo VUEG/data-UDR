@@ -29,7 +29,7 @@ logger = logging.getLogger("translate_rasters")
 logger.setLevel(logging.DEBUG)
 logFormatter = logging.Formatter("%(asctime)s [%(name)-12s] " +
                                  "[%(levelname)-5.5s] %(message)s",
-                                 datefmt='%a, %d %b %Y %H:%M:%S')
+                                 datefmt='%Y-%m-%d %H:%M:%S')
 
 fileHandler = logging.FileHandler(log_file, mode='w')
 consoleHandler = logging.StreamHandler()
@@ -56,7 +56,7 @@ for aig in input_rasters:
     # Skip raster if it's in skip_rasters list
     if aig in SKIP_RASTERS:
         logger.warning('[{0}/{1}] Skipping an empty'.format(counter, n_files) +
-                       ' or zero raster')
+                       ' or zero raster {}'.format(aig))
         next
     # Figure out the species. First, get rid of 'hdr.adf' in the AIG name
     spp_path = aig.replace('/hdr.adf', '')
@@ -107,5 +107,7 @@ data_manifest['collections']['mammals'].sort()
 data_manifest['collections']['reptiles'].sort()
 
 # Write the data manifest file
-with open(snakemake.output['data_manifest'], 'w') as outfile:
+outfile = snakemake.output['data_manifest']
+with open(outfile, 'w') as outfile:
     outfile.write(yaml.dump(data_manifest, default_flow_style=False))
+logger.info('Created data manifest file {}'.format(outfile))

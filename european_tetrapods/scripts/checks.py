@@ -27,7 +27,7 @@ logger = logging.getLogger("check_data")
 logger.setLevel(logging.DEBUG)
 logFormatter = logging.Formatter("%(asctime)s [%(name)-12s] " +
                                  "[%(levelname)-5.5s] %(message)s",
-                                 datefmt='%a, %d %b %Y %H:%M:%S')
+                                 datefmt='%Y-%m-%d %H:%M:%S')
 
 fileHandler = logging.FileHandler(log_file, mode='w')
 consoleHandler = logging.StreamHandler()
