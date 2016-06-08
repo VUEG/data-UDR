@@ -71,6 +71,9 @@ for aig in input_rasters:
     else:
         sci_name = sci_name.values[0]
         output_file = sci_name.lower().replace(' ', '_') + '.tif'
+        # Get rid of problematic characters in the names
+        output_file = output_file.replace('(', '')
+        output_file = output_file.replace(')', '')
         output_file = os.path.join(output_path, output_file)
         # Create the folder if it does not exist
         if not os.path.exists(os.path.dirname(output_file)):
