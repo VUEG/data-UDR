@@ -64,6 +64,9 @@ for i, aig in enumerate(input_rasters):
     # Fore reason or another, spp_code is prefix with an additional "m". Get
     # rid of that
     spp_code = spp_code[1:]
+    # Also get rid of the "_12" component. NOTE: change this if "_2" (marginal
+    # habitats) is used.
+    spp_code = spp_code.replace('_12', '')
 
     # Get the auxiliary data
     sci_name = spp_data.loc[spp_data.code == spp_code, 'species']

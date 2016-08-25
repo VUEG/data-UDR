@@ -6,11 +6,15 @@ from pandas import concat, read_excel
 
 ## GLOBALS ---------------------------------------------------------------------
 
-# List the datasets to be processed
-DATASETS = glob.glob("data/org/amph/*/hdr.adf") + \
-           glob.glob("data/org/bird/*/hdr.adf") + \
-           glob.glob("data/org/mam/*/hdr.adf") + \
-           glob.glob("data/org/rept/*/hdr.adf")
+# List the datasets to be processed. NOTE: currently, both predictions for the
+# EOO both in primary (1) and marginal (2) habitats are used. We select files
+# with "_12" identifier in the name. "data/org/[TAXON]" folders also include
+# prediction rasters with just the marginal habitat ("_2"), but not with just
+# the primary habitat ("_1").
+DATASETS = glob.glob("data/org/amph/*_12/hdr.adf") + \
+           glob.glob("data/org/bird/*_12/hdr.adf") + \
+           glob.glob("data/org/mam/*_12/hdr.adf") + \
+           glob.glob("data/org/rept/*_12/hdr.adf")
 
 ## RULES -----------------------------------------------------------------------
 
