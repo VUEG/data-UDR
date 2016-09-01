@@ -14,6 +14,24 @@ In the original European tetrapods dataset, there are 819 species. For the versi
 | Reptiles   | 112     |
 | **Total**  | **763** |
 
+### Folder structure and processing
+
+```
+├── org                 <- Original data received from Luigi Maiorano       
+│                          <luigi.maiorano@uniroma1.it> on 2016-08-03 via  
+│                          Dropbox. Copied manually from here since couldn't get  
+│                          snakemake's Dropbox remote working.  
+└── european_tetrapods  <- Processed and filtered files
+```
+
+The files in sub-directory `org` are as they have been received from Luigi Maiorano. Folder `european_tetrapods` contains processed files. The processing steps are the following:
+
+1. Check data for empty layers
+2. Translate numeric codes into proper species names
+3. Translate all rasters from ArcInfo grids (AIGs) to GeoTIFFs.
+
+See [Snakemake file](Sanekmake) for details.
+
 ### Metadata
 
 #### Cell values
