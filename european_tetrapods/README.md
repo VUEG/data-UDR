@@ -14,6 +14,8 @@ In the original European tetrapods dataset, there are 819 species. For the versi
 | Reptiles   | 112     |
 | **Total**  | **763** |
 
+See also https://github.com/VUEG/data-UDR for a development version.
+
 ### Folder structure and processing
 
 ```
@@ -30,13 +32,13 @@ The files in sub-directory `org` are as they have been received from Luigi Maior
 2. Translate numeric codes into proper species names
 3. Translate all rasters from ArcInfo grids (AIGs) to GeoTIFFs.
 
-See [Snakemake file](Sanekmake) for details.
+See [Snakemake file](https://github.com/VUEG/data-UDR/blob/master/european_tetrapods/Snakefile) for details.
 
 ### Metadata
 
 #### Cell values
 
-For each species `j` and cell `i`, the value `r_ij` is in range [0, 100] and corresponds to the estimated percentage of *primary* and *margnial* habitat for the given species. Original data can separate between the two habitat types, but here they have been pooled together.
+For each species `j` and cell `i`, the value `r_ij` is in range [0, 100] and corresponds to the estimated pSanekmakeercentage of *primary* and *margnial* habitat for the given species. Original data can separate between the two habitat types, but here they have been pooled together.
 
 #### Geospatial
 
