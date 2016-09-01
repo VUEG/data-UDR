@@ -9,8 +9,6 @@
 │
 ├── rept                <- Original data for reptiles.
 │
-├── bird                <- Original data for birds.
-│
 ├── Codes.xlsx          <- Excel worksheet lookup table linking the numeric
 │                          codes in the AIG names into real species names.
 │
