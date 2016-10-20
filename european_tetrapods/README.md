@@ -38,7 +38,7 @@ See [Snakemake file](https://github.com/VUEG/data-UDR/blob/master/european_tetra
 
 #### Cell values
 
-For each species `j` and cell `i`, the value `r_ij` is in range [0, 100] and corresponds to the estimated pSanekmakeercentage of *primary* and *margnial* habitat for the given species. Original data can separate between the two habitat types, but here they have been pooled together.
+For each species `j` and cell `i`, the value `r_ij` is in range [0, 100] and corresponds to the estimated percentage of *primary* and *marginal* habitat for the given species. Original data can separate between the two habitat types, but here they have been pooled together.
 
 #### Geospatial
 
