@@ -2,7 +2,7 @@
 
 ### Description
 
-This dataset include the distributions of 819 species of European tetrapods (amphibians, birds, mammals, and reptiles). For the four groups, the EOOs (extent of occurrence) were then refined using habitat preferences for all species, obtained from expert opinion and published literature. The resolution of the data is 1 square kilometer.
+This dataset include the distributions of 763 species of European tetrapods (amphibians, birds, mammals, and reptiles). For the four groups, the EOOs (extent of occurrence) were then refined using habitat preferences for all species, obtained from expert opinion and published literature. The resolution of the data is 1 square kilometer.
 
 In the original European tetrapods dataset, there are 819 species. For the version here, the original data has been subset spatially to include EU-26 countries (AT, BE, BG, CZ, DE, DK, ES, EL, EE, FR, FI, IT, HU, IE, NL, LU, LI, LT, LV, PL, SE, RO, PT, SK, SI, UK). After the spatial subsetting, this dataset contains 763 species. The number of species in each species group is:
 
